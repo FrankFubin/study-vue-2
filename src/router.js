@@ -1,6 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Home from './components/Home.vue'
+import Admin from './components/Admin'
+import Login from './components/Login'
+import Menu from './components/Menu'
+import Register from './components/Register'
+import About from './components/about/About'
+import Contact from './components/about/Contact'
+import History from './components/about/History'
+import Delivery from './components/about/Delivery'
+import OrderingGuide from './components/about/OrderingGuide'
+
 
 Vue.use(Router)
 
@@ -14,12 +24,56 @@ export default new Router({
       component: Home
     },
     {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: Menu
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: About,
+      children:[
+        {
+          path: '/contact',
+          name: 'contact',
+          component: Contact
+        },
+        {
+          path: '/history',
+          name: 'history',
+          component: History
+        },
+        {
+          path: '/delivery',
+          name: 'delivery',
+          component: Delivery
+        },
+        {
+          path: '/orderingGuide',
+          name: 'orderingGuide',
+          component: OrderingGuide
+        }
+      ]
+    },
+    {
+      path:'*',
+      redirect:'/'
+
     }
   ]
 })
