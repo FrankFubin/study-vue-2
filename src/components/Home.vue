@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>Home</h1>
-        <button class="btn btn-success" @click="goToMenu">Let's go</button>
+        <div class="container">
+            <h1>Home</h1>
+            <button class="btn btn-success" @click="goToMenu">Let's go</button>
+        </div>
     </div>
 </template>
 <script>
